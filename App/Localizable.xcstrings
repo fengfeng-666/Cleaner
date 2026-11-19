@@ -1,0 +1,776 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lld items moved to Recently Deleted" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "已将 %lld 个项目移至「最近删除」" } },
+        "en" : { "variations" : { "plural" : {
+          "one" : { "stringUnit" : { "state" : "translated", "value" : "%lld item moved to Recently Deleted" } },
+          "other" : { "stringUnit" : { "state" : "translated", "value" : "%lld items moved to Recently Deleted" } }
+        } } },
+        "es" : { "variations" : { "plural" : {
+          "one" : { "stringUnit" : { "state" : "translated", "value" : "%lld elemento trasladado a «Eliminados recientemente»" } },
+          "other" : { "stringUnit" : { "state" : "translated", "value" : "%lld elementos trasladados a «Eliminados recientemente»" } }
+        } } },
+        "de" : { "variations" : { "plural" : {
+          "one" : { "stringUnit" : { "state" : "translated", "value" : "%lld Element nach „Zuletzt gelöscht“ verschoben" } },
+          "other" : { "stringUnit" : { "state" : "translated", "value" : "%lld Elemente nach „Zuletzt gelöscht“ verschoben" } }
+        } } },
+        "fr" : { "variations" : { "plural" : {
+          "one" : { "stringUnit" : { "state" : "translated", "value" : "%lld élément déplacé vers « Supprimées récemment »" } },
+          "other" : { "stringUnit" : { "state" : "translated", "value" : "%lld éléments déplacés vers « Supprimées récemment »" } }
+        } } }
+      }
+    },
+    "1 screenshot selected" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "已选择 1 张截屏" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "1 captura seleccionada" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "1 Screenshot ausgewählt" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "1 capture d’écran sélectionnée" } }
+      }
+    },
+    "Before You Delete" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "删除前请留意" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Antes de eliminar" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Vor dem Löschen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Avant la suppression" } }
+      }
+    },
+    "Cancel Preview Load" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "取消加载" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cancelar la carga" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Laden abbrechen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Annuler le chargement" } }
+      }
+    },
+    "Checking photo access" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "正在检查照片访问权限" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Comprobando el acceso a las fotos" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Fotozugriff wird geprüft" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Vérification de l’accès aux photos" } }
+      }
+    },
+    "Clean" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "清理" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Limpiar" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Aufräumen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Nettoyer" } }
+      }
+    },
+    "Clean Up Your Photo Library" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "整理你的照片图库" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Organiza tu fototeca" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Räum deine Fotomediathek auf" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Faites le tri dans votre photothèque" } }
+      }
+    },
+    "Cleaner" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "Cleaner" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cleaner" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Cleaner" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Cleaner" } }
+      }
+    },
+    "Cleaner scans screenshots on this iPhone. Cleanup history and the free allowance are stored on this device." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "Cleaner 在这部 iPhone 上扫描截屏。清理记录和免费额度均保存在本机。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cleaner analiza las capturas en este iPhone. El historial de limpieza y el cupo gratuito se guardan en este dispositivo." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Cleaner prüft Screenshots auf diesem iPhone. Der Verlauf und das kostenlose Kontingent werden auf diesem Gerät gespeichert." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Cleaner analyse les captures d’écran sur cet iPhone. L’historique et le quota gratuit sont enregistrés sur cet appareil." } }
+      }
+    },
+    "Cleanup" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "清理" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Limpieza" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Aufräumen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Nettoyage" } }
+      }
+    },
+    "Cleanup Complete" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "清理完成" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Limpieza completada" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Aufräumen abgeschlossen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Nettoyage terminé" } }
+      }
+    },
+    "Cleanup History" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "清理记录" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Historial de limpieza" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Verlauf" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Historique du nettoyage" } }
+      }
+    },
+    "Clear History" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "清除记录" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Borrar el historial" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Verlauf löschen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effacer l’historique" } }
+      }
+    },
+    "Clear cleanup history?" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "清除清理记录？" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "¿Borrar el historial de limpieza?" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Verlauf löschen?" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Effacer l’historique du nettoyage ?" } }
+      }
+    },
+    "Continue Including Favorites" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "继续，包含收藏项" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Continuar con los favoritos" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Mit Favoriten fortfahren" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Continuer avec les favoris" } }
+      }
+    },
+    "Continue to Photos" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "继续至系统确认" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Continuar en Fotos" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "In Fotos fortfahren" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Continuer dans Photos" } }
+      }
+    },
+    "Couldn’t clear cleanup history. Try again." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "无法清除清理记录，请重试。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "No se pudo borrar el historial de limpieza. Inténtalo de nuevo." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Der Verlauf konnte nicht gelöscht werden. Versuch es erneut." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Impossible d’effacer l’historique du nettoyage. Réessayez." } }
+      }
+    },
+    "Couldn’t prepare the cleanup. Check your remaining items and try again." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "无法开始清理。请检查剩余免费额度后重试。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "No se pudo preparar la limpieza. Comprueba tu cupo restante e inténtalo de nuevo." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Das Aufräumen konnte nicht vorbereitet werden. Prüfe dein verbleibendes Kontingent und versuch es erneut." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Impossible de préparer le nettoyage. Vérifiez votre quota restant, puis réessayez." } }
+      }
+    },
+    "Couldn’t scan your screenshots. Try again." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "无法扫描截屏，请重试。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "No se pudieron analizar tus capturas. Inténtalo de nuevo." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Deine Screenshots konnten nicht geprüft werden. Versuch es erneut." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Impossible d’analyser vos captures d’écran. Réessayez." } }
+      }
+    },
+    "Couldn’t update the cleanup record. Check your photo library." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "无法更新清理记录，请检查照片图库。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "No se pudo actualizar el registro de limpieza. Comprueba tu fototeca." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Der Eintrag konnte nicht aktualisiert werden. Prüfe deine Fotomediathek." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Impossible de mettre à jour le suivi du nettoyage. Vérifiez votre photothèque." } }
+      }
+    },
+    "Couldn’t update the cleanup record. Try again." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "无法更新清理记录，请重试。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "No se pudo actualizar el registro de limpieza. Inténtalo de nuevo." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Der Eintrag konnte nicht aktualisiert werden. Versuch es erneut." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Impossible de mettre à jour le suivi du nettoyage. Réessayez." } }
+      }
+    },
+    "Delete %lld Items" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "删除 %lld 个项目" } },
+        "en" : { "variations" : { "plural" : {
+          "one" : { "stringUnit" : { "state" : "translated", "value" : "Delete %lld Item" } },
+          "other" : { "stringUnit" : { "state" : "translated", "value" : "Delete %lld Items" } }
+        } } },
+        "es" : { "variations" : { "plural" : {
+          "one" : { "stringUnit" : { "state" : "translated", "value" : "Eliminar %lld elemento" } },
+          "other" : { "stringUnit" : { "state" : "translated", "value" : "Eliminar %lld elementos" } }
+        } } },
+        "de" : { "variations" : { "plural" : {
+          "one" : { "stringUnit" : { "state" : "translated", "value" : "%lld Element löschen" } },
+          "other" : { "stringUnit" : { "state" : "translated", "value" : "%lld Elemente löschen" } }
+        } } },
+        "fr" : { "variations" : { "plural" : {
+          "one" : { "stringUnit" : { "state" : "translated", "value" : "Supprimer %lld élément" } },
+          "other" : { "stringUnit" : { "state" : "translated", "value" : "Supprimer %lld éléments" } }
+        } } }
+      }
+    },
+    "Deletion can sync to your other devices and affect Shared Library participants." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "删除操作可能同步到你的其他设备，也可能影响共享图库的其他参与者。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "La eliminación puede sincronizarse con tus otros dispositivos y afectar a quienes participan en la fototeca compartida." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Das Löschen kann mit deinen anderen Geräten synchronisiert werden und sich auf andere Personen in der geteilten Mediathek auswirken." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "La suppression peut se répercuter sur vos autres appareils et affecter les personnes qui utilisent la photothèque partagée." } }
+      }
+    },
+    "Device restrictions limit photo access." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "设备限制了照片访问权限。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Las restricciones del dispositivo limitan el acceso a las fotos." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Gerätebeschränkungen begrenzen den Fotozugriff." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Les restrictions de l’appareil limitent l’accès aux photos." } }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Listo" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Fertig" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Terminé" } }
+      }
+    },
+    "Favorite" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "已收藏" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Favorita" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Favorit" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Favori" } }
+      }
+    },
+    "Favorite. You’ll confirm its removal separately." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "这张截屏已收藏，删除时需要单独确认。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Captura favorita. Tendrás que confirmar su eliminación por separado." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Favorit. Du bestätigst das Löschen separat." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Capture en favori. Vous confirmerez sa suppression séparément." } }
+      }
+    },
+    "Favorites selected for removal: %lld. Deletion can sync to other devices and affect Shared Library participants." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "所选项目中有 %lld 个收藏项。删除操作可能同步到其他设备，也可能影响共享图库的其他参与者。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Favoritos que se eliminarán: %lld. La eliminación puede sincronizarse con otros dispositivos y afectar a quienes participan en la fototeca compartida." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Zum Löschen ausgewählte Favoriten: %lld. Das Löschen kann sich auf andere Geräte und auf andere Personen in der geteilten Mediathek auswirken." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Favoris à supprimer : %lld. La suppression peut se répercuter sur d’autres appareils et affecter les personnes qui utilisent la photothèque partagée." } }
+      }
+    },
+    "Find screenshots you no longer need. Review them on your iPhone before you delete." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "找出不再需要的截屏，在 iPhone 上查看并确认后再删除。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Encuentra las capturas que ya no necesitas. Revísalas en tu iPhone antes de eliminarlas." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Finde Screenshots, die du nicht mehr brauchst. Prüfe sie auf deinem iPhone, bevor du sie löschst." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Retrouvez les captures d’écran dont vous n’avez plus besoin. Vérifiez-les sur votre iPhone avant de les supprimer." } }
+      }
+    },
+    "Finding screenshots" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "正在查找截屏" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Buscando capturas de pantalla" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Screenshots werden gesucht" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Recherche des captures d’écran" } }
+      }
+    },
+    "Free items remaining" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "剩余免费额度" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Eliminaciones gratuitas restantes" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Kostenlos löschbare Elemente" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Suppressions gratuites restantes" } }
+      }
+    },
+    "Full photo access" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "已获照片完全访问权限" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Acceso completo a las fotos" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Vollzugriff auf Fotos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Accès complet aux photos" } }
+      }
+    },
+    "I Checked Photos" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "我已检查「照片」" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ya he revisado Fotos" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "In Fotos nachgesehen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "J’ai vérifié dans Photos" } }
+      }
+    },
+    "If you use iCloud Photos, deletions can sync to your other devices. Deleting items from a Shared Library can affect everyone who uses it." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "如果你使用 iCloud 照片，删除操作可能同步到你的其他设备。从共享图库中删除项目可能影响所有参与者。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Si usas Fotos en iCloud, las eliminaciones pueden sincronizarse con tus otros dispositivos. Eliminar elementos de una fototeca compartida puede afectar a todas las personas que la usan." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wenn du iCloud-Fotos nutzt, können Löschvorgänge mit deinen anderen Geräten synchronisiert werden. Das Löschen von Elementen aus einer geteilten Mediathek kann alle Personen betreffen, die sie nutzen." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Si vous utilisez Photos iCloud, les suppressions peuvent se répercuter sur vos autres appareils. Supprimer des éléments d’une photothèque partagée peut affecter toutes les personnes qui l’utilisent." } }
+      }
+    },
+    "Loading screenshot" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "正在加载截屏" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cargando la captura" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Screenshot wird geladen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Chargement de la capture d’écran" } }
+      }
+    },
+    "Manage Photo Access" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "管理照片访问权限" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Gestionar el acceso a las fotos" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Fotozugriff verwalten" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Gérer l’accès aux photos" } }
+      }
+    },
+    "Move screenshots to Recently Deleted?" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "将所选截屏移至「最近删除」？" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "¿Mover las capturas a «Eliminados recientemente»?" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Screenshots nach „Zuletzt gelöscht“ verschieben?" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Déplacer les captures vers « Supprimées récemment » ?" } }
+      }
+    },
+    "No Cleanup History" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "暂无清理记录" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "No hay historial de limpieza" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Verlauf ist leer" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Aucun historique de nettoyage" } }
+      }
+    },
+    "No Matching Screenshots" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "没有符合条件的截屏" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "No hay capturas que coincidan" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Keine passenden Screenshots" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Aucune capture correspondante" } }
+      }
+    },
+    "No screenshots found in the photos we can access." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "在可访问的照片中没有找到截屏。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "No hay capturas entre las fotos a las que tenemos acceso." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Unter den zugänglichen Fotos wurden keine Screenshots gefunden." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Aucune capture d’écran parmi les photos accessibles." } }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "好" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Aceptar" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "OK" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "OK" } }
+      }
+    },
+    "Older than 30 days" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "仅显示 30 天前的截屏" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "De hace más de 30 días" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Älter als 30 Tage" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Plus de 30 jours" } }
+      }
+    },
+    "Open Settings" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "打开设置" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Abrir Ajustes" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Einstellungen öffnen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Ouvrir Réglages" } }
+      }
+    },
+    "Original sizes unavailable" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "原文件大小未知的项目数" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sin tamaño de archivo original" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Ohne Originaldateigröße" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Taille d’origine inconnue" } }
+      }
+    },
+    "Pack charger\nDownload tickets\nCheck train times" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "带上充电器\n下载车票\n查看列车时刻" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Guardar el cargador\nDescargar los billetes\nConsultar los horarios del tren" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Ladegerät einpacken\nTickets herunterladen\nZugzeiten prüfen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Emporter le chargeur\nTélécharger les billets\nVérifier les horaires du train" } }
+      }
+    },
+    "Photo Access" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "照片访问权限" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Acceso a las fotos" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Fotozugriff" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Accès aux photos" } }
+      }
+    },
+    "Photo Access Unavailable" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "无法访问照片" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sin acceso a las fotos" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Kein Fotozugriff" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Accès aux photos indisponible" } }
+      }
+    },
+    "Photo access is off." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "照片访问权限已关闭。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "El acceso a las fotos está desactivado." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Der Fotozugriff ist deaktiviert." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "L’accès aux photos est désactivé." } }
+      }
+    },
+    "Photo access is requested when you scan." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "开始扫描时会请求照片访问权限。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Te pediremos acceso a las fotos al iniciar la búsqueda." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Beim Start der Suche wird der Fotozugriff angefragt." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "L’accès aux photos est demandé au lancement de l’analyse." } }
+      }
+    },
+    "Photos confirmed the deletion. The cleanup record is waiting to be saved." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "「照片」已确认删除，清理记录尚未保存。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Fotos ha confirmado la eliminación. El registro de limpieza aún no se ha guardado." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Fotos hat das Löschen bestätigt. Der Eintrag wurde noch nicht gespeichert." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Photos a confirmé la suppression. Le nettoyage est en attente d’enregistrement." } }
+      }
+    },
+    "Photos couldn’t complete this cleanup. Review the selection and try again." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "「照片」未能完成清理。请检查所选项目后重试。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Fotos no pudo completar la limpieza. Revisa la selección e inténtalo de nuevo." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Fotos konnte das Aufräumen nicht abschließen. Prüfe deine Auswahl und versuch es erneut." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Photos n’a pas pu terminer le nettoyage. Vérifiez la sélection, puis réessayez." } }
+      }
+    },
+    "Photos selected" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "已选照片数" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Fotos seleccionadas" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Ausgewählte Fotos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Photos sélectionnées" } }
+      }
+    },
+    "Preview" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "预览" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Vista previa" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Vorschau" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Aperçu" } }
+      }
+    },
+    "Privacy" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "隐私" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Privacidad" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Datenschutz" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Confidentialité" } }
+      }
+    },
+    "Recover Deleted Items" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "恢复已删除项目" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Recuperar elementos eliminados" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Gelöschte Elemente wiederherstellen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Récupérer les éléments supprimés" } }
+      }
+    },
+    "Recovery" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "恢复指引" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Recuperación" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wiederherstellung" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Récupération" } }
+      }
+    },
+    "Refresh Screenshots" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "刷新截屏列表" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Actualizar capturas" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Screenshots aktualisieren" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Actualiser les captures" } }
+      }
+    },
+    "Remove from Selection" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "取消选择" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Quitar de la selección" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Aus Auswahl entfernen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Retirer de la sélection" } }
+      }
+    },
+    "Remove from selection" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "取消选择此项目" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Quitar de la selección" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Aus Auswahl entfernen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Retirer de la sélection" } }
+      }
+    },
+    "Remove items from your selection to stay within your free allowance." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "请减少所选项目，使数量不超过剩余免费额度。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Quita elementos de la selección para no superar el cupo gratuito." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Entferne Elemente aus deiner Auswahl, um dein kostenloses Kontingent einzuhalten." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Retirez des éléments de la sélection pour respecter votre quota gratuit." } }
+      }
+    },
+    "Retry Cleanup Record" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "重试读取清理记录" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Volver a cargar el registro" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Eintrag erneut laden" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Recharger le suivi" } }
+      }
+    },
+    "Retry Preview" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "重试加载预览" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Volver a cargar la vista previa" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Vorschau erneut laden" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Recharger l’aperçu" } }
+      }
+    },
+    "Review Cleanup" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "确认清理范围" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Revisar la limpieza" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Auswahl prüfen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Vérification du nettoyage" } }
+      }
+    },
+    "Review Selection (%lld)" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "核对所选项目（%lld）" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Revisar la selección (%lld)" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Auswahl prüfen (%lld)" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Vérifier la sélection (%lld)" } }
+      }
+    },
+    "Sample Cleanup" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "清理示例" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ejemplo de limpieza" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Aufräumbeispiel" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Exemple de nettoyage" } }
+      }
+    },
+    "Sample Review" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "核对示例项目" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Revisión de ejemplo" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Beispielauswahl prüfen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Vérification de l’exemple" } }
+      }
+    },
+    "Sample photos" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "示例照片" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Fotos de ejemplo" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Beispielfotos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Photos d’exemple" } }
+      }
+    },
+    "Scan My Photos" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "扫描照片" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Analizar mis fotos" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Meine Fotos durchsuchen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Analyser mes photos" } }
+      }
+    },
+    "Scanning selected photos only." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "仅扫描你授权访问的照片。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Solo se analizan las fotos seleccionadas." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Nur ausgewählte Fotos werden geprüft." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Seules les photos sélectionnées sont analysées." } }
+      }
+    },
+    "Screenshot Unavailable" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "截屏不可用" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Captura no disponible" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Screenshot nicht verfügbar" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Capture d’écran indisponible" } }
+      }
+    },
+    "Screenshot preview" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "截屏预览" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Vista previa de la captura" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Screenshot-Vorschau" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Aperçu de la capture d’écran" } }
+      }
+    },
+    "Screenshots" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "截屏" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Capturas de pantalla" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Screenshots" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Captures d’écran" } }
+      }
+    },
+    "Screenshots removed" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "已删除截屏数" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Capturas eliminadas" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Gelöschte Screenshots" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Captures supprimées" } }
+      }
+    },
+    "Select Screenshot" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "选择截屏" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Seleccionar captura" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Screenshot auswählen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Sélectionner la capture" } }
+      }
+    },
+    "Select sample screenshot" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "选择示例截屏" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Seleccionar la captura de ejemplo" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Beispiel-Screenshot auswählen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Sélectionner la capture d’exemple" } }
+      }
+    },
+    "Select up to %lld items per cleanup." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "每次最多选择 %lld 个项目。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Selecciona hasta %lld elementos por limpieza." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Wähle bis zu %lld Elemente pro Vorgang aus." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Sélectionnez jusqu’à %lld éléments par nettoyage." } }
+      }
+    },
+    "Selected items move to Recently Deleted in Photos." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "所选项目将移至「照片」中的「最近删除」。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Los elementos seleccionados pasarán a «Eliminados recientemente» en Fotos." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Ausgewählte Elemente werden in Fotos nach „Zuletzt gelöscht“ verschoben." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Les éléments sélectionnés seront déplacés vers « Supprimées récemment » dans Photos." } }
+      }
+    },
+    "Selection" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "所选项目" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Selección" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Auswahl" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Sélection" } }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "设置" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ajustes" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Einstellungen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Réglages" } }
+      }
+    },
+    "Some screenshots changed or are no longer accessible. Review your updated selection." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "部分截屏已更改或无法访问。请重新核对所选项目。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Algunas capturas han cambiado o ya no están disponibles. Revisa la selección actualizada." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Einige Screenshots wurden geändert oder sind nicht mehr zugänglich. Prüfe deine aktualisierte Auswahl." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Certaines captures ont changé ou ne sont plus accessibles. Vérifiez la sélection mise à jour." } }
+      }
+    },
+    "The cleanup record is unavailable. Try again to continue." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "暂时无法读取清理记录，请重试。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "El registro de limpieza no está disponible. Inténtalo de nuevo para continuar." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Der Eintrag ist nicht verfügbar. Versuch es erneut, um fortzufahren." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Le suivi du nettoyage est indisponible. Réessayez pour continuer." } }
+      }
+    },
+    "The photo library changed. Review your updated selection." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "照片图库已发生变化。请重新核对所选项目。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "La fototeca ha cambiado. Revisa la selección actualizada." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Die Fotomediathek wurde geändert. Prüfe deine aktualisierte Auswahl." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "La photothèque a changé. Vérifiez la sélection mise à jour." } }
+      }
+    },
+    "The screenshot preview isn’t available." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "无法预览这张截屏。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "La vista previa de la captura no está disponible." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Die Screenshot-Vorschau ist nicht verfügbar." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "L’aperçu de la capture d’écran est indisponible." } }
+      }
+    },
+    "This screenshot changed or is no longer available." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "这张截屏已更改或不再可用。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Esta captura ha cambiado o ya no está disponible." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Dieser Screenshot wurde geändert oder ist nicht mehr verfügbar." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Cette capture a changé ou n’est plus disponible." } }
+      }
+    },
+    "To recover items, open Photos and find Recently Deleted under Utilities." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "如需恢复项目，请打开「照片」，在「更多项目」下找到「最近删除」。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Para recuperar elementos, abre Fotos y busca «Eliminados recientemente» en «Utilidades»." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Öffne zum Wiederherstellen die Fotos-App und suche unter „Sonstige“ nach „Zuletzt gelöscht“." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Pour récupérer des éléments, ouvrez Photos et cherchez « Supprimées récemment » dans la section « Autres »." } }
+      }
+    },
+    "To recover items, open Photos, tap Albums, then find Recently Deleted under Utilities." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "如需恢复项目，请打开「照片」，轻点「相簿」，然后找到「最近删除」。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Para recuperar elementos, abre Fotos, toca «Álbumes» y busca «Eliminados recientemente» en «Utilidades»." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Öffne zum Wiederherstellen die Fotos-App, tippe auf „Alben“ und suche unter „Sonstige“ nach „Zuletzt gelöscht“." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Pour récupérer des éléments, ouvrez Photos, touchez « Albums », puis cherchez « Supprimées récemment » dans la section « Autres »." } }
+      }
+    },
+    "Unknown Date" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "日期未知" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Fecha desconocida" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Unbekanntes Datum" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Date inconnue" } }
+      }
+    },
+    "View Sample Cleanup" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "查看清理示例" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ver un ejemplo de limpieza" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Beispiel ansehen" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Voir un exemple de nettoyage" } }
+      }
+    },
+    "Waiting for Photos" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "正在等待「照片」返回结果" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Esperando a Fotos" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Warten auf Fotos" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "En attente de Photos" } }
+      }
+    },
+    "Waiting for photo access" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "正在等待照片访问授权" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Esperando el permiso de acceso a las fotos" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Warten auf Fotozugriff" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "En attente de l’autorisation d’accès aux photos" } }
+      }
+    },
+    "We couldn’t confirm the result. Check Recently Deleted in Photos before continuing." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "无法确认删除结果。请先检查「照片」中的「最近删除」，再继续。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "No se pudo confirmar el resultado. Revisa «Eliminados recientemente» en Fotos antes de continuar." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Das Ergebnis konnte nicht bestätigt werden. Prüfe in Fotos den Bereich „Zuletzt gelöscht“, bevor du fortfährst." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Le résultat n’a pas pu être confirmé. Vérifiez « Supprimées récemment » dans Photos avant de continuer." } }
+      }
+    },
+    "Weekend checklist" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "周末待办清单" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Lista para el fin de semana" } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Checkliste fürs Wochenende" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "À faire pour le week-end" } }
+      }
+    },
+    "Your remaining free allowance stays the same." : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "清除记录后，剩余免费额度保持不变。" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Conservarás el cupo gratuito que te queda." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Dein verbleibendes kostenloses Kontingent bleibt gleich." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Votre quota gratuit restant est conservé." } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

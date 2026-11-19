@@ -1,0 +1,15 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "NSPhotoLibraryUsageDescription" : {
+      "localizations" : {
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "允许访问照片，以便查找你可能想删除的截屏。Cleaner 只会删除你选中并确认删除的项目。" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Allow photo access to find screenshots you may want to remove. Cleaner deletes only the items you select and confirm." } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Permite el acceso a tus fotos para encontrar capturas de pantalla que quizá quieras eliminar. Cleaner solo elimina los elementos que seleccionas y confirmas." } },
+        "de" : { "stringUnit" : { "state" : "translated", "value" : "Erlaube den Zugriff auf deine Fotos, um Screenshots zu finden, die du vielleicht löschen möchtest. Cleaner löscht nur die Elemente, die du auswählst und deren Löschung du bestätigst." } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Autorisez l’accès à vos photos pour trouver les captures d’écran que vous pourriez vouloir supprimer. Cleaner supprime uniquement les éléments que vous sélectionnez et dont vous confirmez la suppression." } }
+      }
+    }
+  },
+  "version" : "1.0"
+}
