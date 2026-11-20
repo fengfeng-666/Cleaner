@@ -1,12 +1,11 @@
 import Foundation
 import Observation
-import Photos
 
 @MainActor
 @Observable
-final class CleanerModel {
-    private(set) var access = PHPhotoLibrary.authorizationStatus(for: .readWrite)
-    private(set) var months: [ScreenshotMonth] = []
+final class CleanerViewModel {
+    private(set) var access: PhotoAccess
+    private var months: [ScreenshotMonth] = []
     private(set) var selection: [Screenshot] = []
     private(set) var scanned = false
     private(set) var scanning = false
@@ -20,23 +19,28 @@ final class CleanerModel {
     private(set) var reviewVersion = UUID()
     private(set) var result: CleanupHistory?
 
-    @ObservationIgnored private let library = ScreenshotLibrary()
+    private var foreground = true
+    private let library: any ScreenshotLibraryServing
+    private let openStore: () throws -> CleanupStore
     @ObservationIgnored private var store: CleanupStore?
     @ObservationIgnored private var scanTask: Task<Void, Never>?
-    @ObservationIgnored private var observer: LibraryObserver?
+    @ObservationIgnored private var observer: AnyObject?
     @ObservationIgnored private var unsavedReceipt: CleanupHistory?
-    @ObservationIgnored private var foreground = true
     @ObservationIgnored private var startedScan = false
 
     var count: Int { months.reduce(0) { $0 + $1.screenshots.count } }
-    var hasAccess: Bool { access == .authorized || access == .limited }
+    var hasAccess: Bool { access.canRead }
+    var favoriteCount: Int { selection.filter(\.isFavorite).count }
     var canSubmit: Bool {
         foreground && hasAccess && !scanning && !submitting && pending == nil
             && unsavedReceipt == nil && !selection.isEmpty
             && selection.count <= CleanupLimits.batchSize && selection.count <= (remaining ?? 0)
     }
 
-    init() {
+    init(library: any ScreenshotLibraryServing, openStore: @escaping () throws -> CleanupStore) {
+        self.library = library
+        self.openStore = openStore
+        access = library.access
         reloadStorage()
     }
 
@@ -44,16 +48,17 @@ final class CleanerModel {
         guard !requestingAccess, !submitting else { return }
         if access == .notDetermined {
             requestingAccess = true
-            access = await PHPhotoLibrary.requestAuthorization(for: .readWrite)
+            await library.requestAccess()
             requestingAccess = false
         }
         startedScan = true
-        refresh(force: true)
+        await refresh(force: true)?.value
     }
 
     func setForeground(_ active: Bool) {
         foreground = active
         if active {
+            reloadStorage()
             refresh()
         } else {
             scanTask?.cancel()
@@ -63,8 +68,13 @@ final class CleanerModel {
         }
     }
 
-    func refresh(force: Bool = false) {
-        let updatedAccess = PHPhotoLibrary.authorizationStatus(for: .readWrite)
+    func managePhotoAccess() {
+        library.presentLimitedPicker { [weak self] in self?.refresh() }
+    }
+
+    @discardableResult
+    private func refresh(force: Bool = false) -> Task<Void, Never>? {
+        let updatedAccess = library.access
         if access != updatedAccess {
             access = updatedAccess
             selection = []
@@ -79,11 +89,11 @@ final class CleanerModel {
             selection = []
             scanning = false
             scanned = false
-            return
+            return nil
         }
-        guard foreground, force || startedScan else { return }
+        guard foreground, force || startedScan else { return nil }
         if observer == nil {
-            observer = LibraryObserver { [weak self] in
+            observer = library.observeChanges { [weak self] in
                 Task { @MainActor in self?.refresh() }
             }
         }
@@ -91,12 +101,12 @@ final class CleanerModel {
         previewVersion = UUID()
         reviewVersion = UUID()
         scanTask?.cancel()
-        scanTask = Task { [weak self, library] in
+        let task = Task { [weak self, library] in
             do {
                 let groups = try await library.scan()
                 try Task.checkCancellation()
                 guard let self else { return }
-                guard access == PHPhotoLibrary.authorizationStatus(for: .readWrite) else {
+                guard access == library.access else {
                     refresh(force: true)
                     return
                 }
@@ -118,6 +128,21 @@ final class CleanerModel {
                 self?.notice = "Couldn’t scan your screenshots. Try again."
             }
         }
+        scanTask = task
+        return task
+    }
+
+    func visibleMonths(olderOnly: Bool) -> [ScreenshotMonth] {
+        let calendar = Calendar.current
+        guard olderOnly, let cutoff = calendar.date(
+            byAdding: .day, value: -30, to: calendar.startOfDay(for: .now)
+        ) else { return months }
+        return months.compactMap { month in
+            let items = month.screenshots.filter { item in
+                item.date.map { $0 < cutoff } ?? false
+            }
+            return items.isEmpty ? nil : ScreenshotMonth(date: month.date, screenshots: items)
+        }
     }
 
     func isSelected(_ item: Screenshot) -> Bool {
@@ -135,7 +160,7 @@ final class CleanerModel {
         guard foreground, !scanning, !submitting, hasAccess, previewVersion == self.previewVersion else { return }
         if isSelected(item) {
             remove(item)
-        } else if let current = ScreenshotLibrary.current([item]).first {
+        } else if let current = library.current([item]).first {
             selection.append(current)
             reviewVersion = UUID()
         } else {
@@ -153,8 +178,12 @@ final class CleanerModel {
     func delete(reviewVersion: UUID) async {
         guard canSubmit, reviewVersion == self.reviewVersion,
               let store else { return }
+        guard access == library.access else {
+            await refresh(force: true)?.value
+            return
+        }
         let reviewed = selection
-        let current = ScreenshotLibrary.current(reviewed)
+        let current = library.current(reviewed)
         guard current.count == reviewed.count else {
             let validIDs = Set(current.map(\.id))
             selection = selection.filter { validIDs.contains($0.id) }
@@ -173,7 +202,7 @@ final class CleanerModel {
         submitting = true
         pending = PendingCleanup(id: id, confirmedAt: nil)
         notice = nil
-        let outcome = await ScreenshotLibrary.delete(current)
+        let outcome = await library.delete(current)
         submitting = false
         switch outcome {
         case .success:
@@ -202,7 +231,7 @@ final class CleanerModel {
                 notice = "Couldn’t update the cleanup record. Check your photo library."
             }
         }
-        refresh(force: true)
+        await refresh(force: true)?.value
     }
 
     func dismissResult() { result = nil }
@@ -224,7 +253,7 @@ final class CleanerModel {
     func reloadStorage() {
         guard !submitting else { return }
         do {
-            if store == nil { store = try CleanupStore.openLocal() }
+            if store == nil { store = try openStore() }
             guard let store else { return }
             if let unsavedReceipt {
                 try store.confirm(id: unsavedReceipt.id, at: unsavedReceipt.date)

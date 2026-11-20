@@ -6,8 +6,8 @@
 	objects = {
 		A10000000000000000000001 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cleaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A10000000000000000000002 = {isa = PBXFileSystemSynchronizedRootGroup; path = App; sourceTree = "<group>"; };
-		A10000000000000000000003 = {isa = PBXGroup; children = (A10000000000000000000002, A10000000000000000000004, ); sourceTree = "<group>"; };
-		A10000000000000000000004 = {isa = PBXGroup; children = (A10000000000000000000001, ); name = Products; sourceTree = "<group>"; };
+		A10000000000000000000003 = {isa = PBXGroup; children = (A10000000000000000000002, A10000000000000000000011, A10000000000000000000004, ); sourceTree = "<group>"; };
+		A10000000000000000000004 = {isa = PBXGroup; children = (A10000000000000000000001, A10000000000000000000010, ); name = Products; sourceTree = "<group>"; };
 		A10000000000000000000005 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 		A10000000000000000000006 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 		A10000000000000000000007 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
@@ -35,7 +35,7 @@
 			productRefGroup = A10000000000000000000004;
 			projectDirPath = "";
 			projectRoot = "";
-			targets = (A10000000000000000000008, );
+			targets = (A10000000000000000000008, A10000000000000000000012, );
 		};
 		A1000000000000000000000A = {isa = XCConfigurationList; buildConfigurations = (A1000000000000000000000C, A1000000000000000000000D, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 		A1000000000000000000000B = {isa = XCConfigurationList; buildConfigurations = (A1000000000000000000000E, A1000000000000000000000F, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
@@ -70,6 +70,51 @@
 				SWIFT_VERSION = 6.0;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		A10000000000000000000010 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10000000000000000000011 = {isa = PBXFileSystemSynchronizedRootGroup; path = Tests; sourceTree = "<group>"; };
+		A10000000000000000000012 = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A10000000000000000000017;
+			buildPhases = (A10000000000000000000013, A10000000000000000000014, );
+			buildRules = ();
+			dependencies = (A10000000000000000000015, );
+			fileSystemSynchronizedGroups = (A10000000000000000000011, );
+			name = CleanerTests;
+			productName = CleanerTests;
+			productReference = A10000000000000000000010;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A10000000000000000000013 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		A10000000000000000000014 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		A10000000000000000000015 = {isa = PBXTargetDependency; target = A10000000000000000000008; targetProxy = A10000000000000000000016; };
+		A10000000000000000000016 = {isa = PBXContainerItemProxy; containerPortal = A10000000000000000000009; proxyType = 1; remoteGlobalIDString = A10000000000000000000008; remoteInfo = Cleaner; };
+		A10000000000000000000017 = {isa = XCConfigurationList; buildConfigurations = (A10000000000000000000018, A10000000000000000000019, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		A10000000000000000000018 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cleaner.prototype.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cleaner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cleaner";
+			};
+			name = Debug;
+		};
+		A10000000000000000000019 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cleaner.prototype.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cleaner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cleaner";
 			};
 			name = Release;
 		};

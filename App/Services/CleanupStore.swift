@@ -1,22 +1,6 @@
 import Foundation
 import SQLite3
 
-struct CleanupHistory: Identifiable {
-    let id: String
-    let date: Date
-    let count: Int
-}
-
-struct PendingCleanup {
-    let id: String
-    let confirmedAt: Date?
-}
-
-enum CleanupLimits {
-    static let freeItems = 10
-    static let batchSize = 200
-}
-
 final class CleanupStore {
     private let database: OpaquePointer
 

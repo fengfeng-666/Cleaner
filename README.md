@@ -14,11 +14,39 @@ xcodebuild -project Cleaner.xcodeproj -scheme Cleaner \
   -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO build
 ```
 
+## 截屏清理验收
+
+在 Xcode 中选择 iPhone 模拟器，按 `⌘U` 运行 `CleanerTests`。也可以指定模拟器 UDID 运行同一套测试：
+
+```sh
+xcodebuild -project Cleaner.xcodeproj -scheme Cleaner \
+  -destination "platform=iOS Simulator,id=$CLEANER_SIMULATOR_UDID" \
+  -derivedDataPath DerivedData -parallel-testing-enabled NO \
+  CODE_SIGNING_ALLOWED=NO test
+```
+
+自动化测试使用模拟图库和临时 SQLite 数据库，覆盖取消、成功结算、重复结算、写入失败后的回滚与重试、重启恢复、结果未知，以及授权或资产变化后的旧复核失效。
+
+| 系统验收项 | 通过标准 |
+| --- | --- |
+| 系统确认取消 | 选择两张测试截屏，在 Photos 确认框取消。截屏与选择均保留，历史为空，剩余 10 项，可重新提交。 |
+| 系统确认成功 | 使用初始额度为 10 的测试安装，确认清理两张截屏。在「最近删除」找到这两张截屏，Cleaner 显示一条 2 项记录及剩余 8 项。重启并刷新后结果一致。 |
+| 确认前中断 | 系统确认框打开时终止 Cleaner，重启后按需取消遗留的系统确认框。Cleaner 显示待核对提示，核对前禁止新清理，历史与额度保持原值。 |
+| 有限授权与资产变化 | 授权部分测试截屏后扫描，只显示获准访问的截屏。复核时撤回访问权限或更改已选资产，旧复核失效，重新提交前必须检查更新后的选择。 |
+| 真机与多语言 | 在 iOS 17 和较新系统上核对系统确认流程。使用两台真机检查 iCloud 同步、共享图库及从「最近删除」恢复。逐一检查五种语言的授权文案、复核数量和错误提示。 |
+
 ## 语言
 
 支持英语、西班牙语、德语、法语和简体中文。Cleaner 读取 iOS 的语言偏好，英语是默认回退语言。可在 iOS 的 Cleaner 应用设置中选择首选语言，或在 Xcode 的 **Edit Scheme → Run → Options** 中分别设置 **App Language** 和 **App Region** 来验证语言和地区格式。
 
 界面、错误提示和数量单复数使用 `App/Localizable.xcstrings`，系统照片授权弹窗里的用途说明使用 `App/InfoPlist.xcstrings`。
+
+## MVVM 架构
+
+- `App/Models` 定义截屏元数据、清理记录和额度。
+- `App/ViewModels` 使用 Swift Observation 管理扫描、筛选、选择、清理以及图片加载状态。
+- `App/Views` 用 SwiftUI 呈现状态并转发用户操作。
+- `App/Services` 封装 PhotoKit 授权、查询、图片请求、删除和 SQLite 持久化。`App/CleanerApp.swift` 负责组装清理流程用到的服务。
 
 ## 当前范围
 

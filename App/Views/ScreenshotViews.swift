@@ -1,27 +1,15 @@
-import Photos
 import SwiftUI
 
 struct ScreenshotList: View {
-    let model: CleanerModel
+    let viewModel: CleanerViewModel
     @State private var olderOnly = false
-
-    private var visibleMonths: [ScreenshotMonth] {
-        guard olderOnly, let cutoff = Calendar.current.date(
-            byAdding: .day, value: -30, to: Calendar.current.startOfDay(for: .now)
-        ) else { return model.months }
-        return model.months.compactMap { month in
-            let items = month.screenshots.filter { item in
-                item.date.map { $0 < cutoff } ?? false
-            }
-            return items.isEmpty ? nil : ScreenshotMonth(date: month.date, screenshots: items)
-        }
-    }
 
     var body: some View {
         List {
-            if model.hasAccess && !model.scanning {
+            if viewModel.hasAccess && !viewModel.scanning {
+                let visibleMonths = viewModel.visibleMonths(olderOnly: olderOnly)
                 Section {
-                    if model.access == .limited { Text("Scanning selected photos only.") }
+                    if viewModel.access == .limited { Text("Scanning selected photos only.") }
                     Toggle("Older than 30 days", isOn: $olderOnly)
                 }
                 if visibleMonths.isEmpty {
@@ -31,9 +19,9 @@ struct ScreenshotList: View {
                     Section {
                         ForEach(month.screenshots) { item in
                             NavigationLink {
-                                ScreenshotPreview(model: model, id: item.id)
+                                ScreenshotPreview(viewModel: viewModel, id: item.id)
                             } label: {
-                                ScreenshotRow(model: model, item: item)
+                                ScreenshotRow(viewModel: viewModel, item: item)
                             }
                             .accessibilityIdentifier("screenshot-row")
                         }
@@ -45,7 +33,7 @@ struct ScreenshotList: View {
                         }
                     }
                 }
-            } else if model.scanning {
+            } else if viewModel.scanning {
                 ProgressView("Finding screenshots")
             } else {
                 ContentUnavailableView("Photo Access Unavailable", systemImage: "lock")
@@ -53,15 +41,15 @@ struct ScreenshotList: View {
         }
         .navigationTitle("Screenshots")
         .safeAreaInset(edge: .bottom) {
-            if model.hasAccess, !model.selection.isEmpty {
+            if viewModel.hasAccess, !viewModel.selection.isEmpty {
                 NavigationLink {
-                    CleanupReview(model: model)
+                    CleanupReview(viewModel: viewModel)
                 } label: {
-                    Text("Review Selection (\(model.selection.count))")
+                    Text("Review Selection (\(viewModel.selection.count))")
                         .frame(maxWidth: .infinity, minHeight: 34)
                 }
                 .buttonStyle(.borderedProminent)
-                .disabled(model.scanning || model.submitting)
+                .disabled(viewModel.scanning || viewModel.submitting)
                 .padding()
                 .frame(maxWidth: .infinity)
                 .background(.bar)
@@ -72,13 +60,13 @@ struct ScreenshotList: View {
 }
 
 private struct ScreenshotRow: View {
-    let model: CleanerModel
+    let viewModel: CleanerViewModel
     let item: Screenshot
 
     var body: some View {
         HStack(spacing: 12) {
             PhotoThumbnail(item: item)
-                .id(model.previewVersion)
+                .id(viewModel.previewVersion)
             VStack(alignment: .leading, spacing: 4) {
                 if let date = item.date {
                     Text(date, format: .dateTime.month(.abbreviated).day().year().hour().minute())
@@ -91,25 +79,25 @@ private struct ScreenshotRow: View {
                 }
             }
             Spacer(minLength: 4)
-            if model.isSelected(item) {
+            if viewModel.isSelected(item) {
                 Image(systemName: "checkmark.circle.fill")
                     .foregroundStyle(.tint)
                     .accessibilityHidden(true)
             }
         }
         .accessibilityElement(children: .combine)
-        .accessibilityAddTraits(model.isSelected(item) ? .isSelected : [])
+        .accessibilityAddTraits(viewModel.isSelected(item) ? .isSelected : [])
     }
 }
 
 private struct PhotoThumbnail: View {
     let item: Screenshot
-    @State private var image: UIImage?
+    @State private var imageViewModel = ScreenshotImageViewModel()
 
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8).fill(.quaternary)
-            if let image {
+            if let image = imageViewModel.image {
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFill()
@@ -121,27 +109,21 @@ private struct PhotoThumbnail: View {
         .clipShape(RoundedRectangle(cornerRadius: 8))
         .accessibilityHidden(true)
         .task(id: item.id) {
-            image = nil
-            for await event in PhotoImages.events(
-                for: item, size: CGSize(width: 180, height: 180), network: false
-            ) {
-                guard !Task.isCancelled else { return }
-                if case .image(let photo) = event { image = photo }
-            }
+            await imageViewModel.load(item, kind: .thumbnail, requestID: imageViewModel.requestID)
         }
     }
 }
 
 private struct ScreenshotPreview: View {
-    let model: CleanerModel
+    let viewModel: CleanerViewModel
     let id: String
 
     var body: some View {
         Group {
-            if model.hasAccess, !model.scanning, let item = model.screenshot(id: id) {
-                PreviewContent(model: model, item: item, version: model.previewVersion)
-                    .id(model.previewVersion)
-            } else if model.scanning {
+            if viewModel.hasAccess, !viewModel.scanning, let item = viewModel.screenshot(id: id) {
+                PreviewContent(viewModel: viewModel, item: item, version: viewModel.previewVersion)
+                    .id(viewModel.previewVersion)
+            } else if viewModel.scanning {
                 ProgressView("Checking photo access")
             } else {
                 ContentUnavailableView("Screenshot Unavailable", systemImage: "photo")
@@ -153,40 +135,34 @@ private struct ScreenshotPreview: View {
 }
 
 private struct PreviewContent: View {
-    let model: CleanerModel
+    let viewModel: CleanerViewModel
     let item: Screenshot
     let version: UUID
-    @State private var image: UIImage?
-    @State private var progress: Double?
-    @State private var loading = true
-    @State private var attempt = UUID()
+    @State private var imageViewModel = ScreenshotImageViewModel()
 
     var body: some View {
+        let requestID = imageViewModel.requestID
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
-                if let image {
+                if let image = imageViewModel.image {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
                         .frame(maxWidth: .infinity)
                         .accessibilityLabel("Screenshot preview")
-                } else if loading {
+                } else if imageViewModel.isLoading {
                     Group {
-                        if let progress {
+                        if let progress = imageViewModel.progress {
                             ProgressView("Loading screenshot", value: progress)
                         } else {
                             ProgressView("Loading screenshot")
                         }
                     }
                     .frame(maxWidth: .infinity, minHeight: 170)
-                    Button("Cancel Preview Load") { loading = false }
+                    Button("Cancel Preview Load") { imageViewModel.cancel() }
                 } else {
                     Text("The screenshot preview isn’t available.")
-                    Button("Retry Preview") {
-                        progress = nil
-                        loading = true
-                        attempt = UUID()
-                    }
+                    Button("Retry Preview") { imageViewModel.retry() }
                 }
                 if item.isFavorite {
                     Label("Favorite. You’ll confirm its removal separately.", systemImage: "heart")
@@ -198,26 +174,16 @@ private struct PreviewContent: View {
                 }
             }
             .padding()
-            .task(id: loading ? attempt : nil) {
-                guard loading else { return }
-                for await event in PhotoImages.events(
-                    for: item, size: CGSize(width: 1_600, height: 1_600), network: true
-                ) {
-                    guard !Task.isCancelled else { return }
-                    switch event {
-                    case .image(let photo): image = photo
-                    case .progress(let value): progress = value
-                    }
-                }
-                if !Task.isCancelled { loading = false }
+            .task(id: requestID) {
+                await imageViewModel.load(item, kind: .preview, requestID: requestID)
             }
         }
         .safeAreaInset(edge: .bottom) {
             Button {
-                model.toggle(item, previewVersion: version)
+                viewModel.toggle(item, previewVersion: version)
             } label: {
                 Group {
-                    if model.isSelected(item) {
+                    if viewModel.isSelected(item) {
                         Text("Remove from Selection")
                     } else {
                         Text("Select Screenshot")
@@ -227,7 +193,7 @@ private struct PreviewContent: View {
                 .frame(maxWidth: .infinity, minHeight: 34)
             }
             .buttonStyle(.borderedProminent)
-            .disabled((image == nil && !model.isSelected(item)) || model.submitting)
+            .disabled((imageViewModel.image == nil && !viewModel.isSelected(item)) || viewModel.submitting)
             .padding()
             .frame(maxWidth: .infinity)
             .background(.bar)
@@ -237,40 +203,40 @@ private struct PreviewContent: View {
 }
 
 private struct CleanupReview: View {
-    let model: CleanerModel
+    let viewModel: CleanerViewModel
     @State private var confirmedVersion: UUID?
 
     var body: some View {
         List {
             Section("Selection") {
-                LabeledContent("Photos selected", value: model.selection.count.formatted())
-                if !model.selection.isEmpty {
-                    LabeledContent("Original sizes unavailable", value: model.selection.count.formatted())
+                LabeledContent("Photos selected", value: viewModel.selection.count.formatted())
+                if !viewModel.selection.isEmpty {
+                    LabeledContent("Original sizes unavailable", value: viewModel.selection.count.formatted())
                 }
-                CleanupStatus(model: model)
-                if model.selection.count > CleanupLimits.batchSize {
+                CleanupStatus(viewModel: viewModel)
+                if viewModel.selection.count > CleanupLimits.batchSize {
                     Text("Select up to \(CleanupLimits.batchSize) items per cleanup.")
-                } else if let remaining = model.remaining, model.selection.count > remaining {
+                } else if let remaining = viewModel.remaining, viewModel.selection.count > remaining {
                     Text("Remove items from your selection to stay within your free allowance.")
                 }
             }
-            if model.hasAccess && !model.scanning {
-                ForEach(model.selection) { item in
+            if viewModel.hasAccess && !viewModel.scanning {
+                ForEach(viewModel.selection) { item in
                     HStack {
                         NavigationLink {
-                            ScreenshotPreview(model: model, id: item.id)
+                            ScreenshotPreview(viewModel: viewModel, id: item.id)
                         } label: {
-                            ScreenshotRow(model: model, item: item)
+                            ScreenshotRow(viewModel: viewModel, item: item)
                         }
                         Button {
-                            model.remove(item)
+                            viewModel.remove(item)
                         } label: {
                             Image(systemName: "minus.circle")
                                 .frame(minWidth: 44, minHeight: 44)
                         }
                         .buttonStyle(.borderless)
                         .accessibilityLabel("Remove from selection")
-                        .disabled(model.submitting)
+                        .disabled(viewModel.submitting)
                     }
                 }
             }
@@ -282,14 +248,14 @@ private struct CleanupReview: View {
         .navigationTitle("Review Cleanup")
         .safeAreaInset(edge: .bottom) {
             Button(role: .destructive) {
-                confirmedVersion = model.reviewVersion
+                confirmedVersion = viewModel.reviewVersion
             } label: {
-                Text("Delete \(model.selection.count) Items")
+                Text("Delete \(viewModel.selection.count) Items")
                     .frame(maxWidth: .infinity, minHeight: 34)
             }
             .buttonStyle(.borderedProminent)
             .tint(.red)
-            .disabled(!model.canSubmit)
+            .disabled(!viewModel.canSubmit)
             .padding()
             .frame(maxWidth: .infinity)
             .background(.bar)
@@ -300,58 +266,21 @@ private struct CleanupReview: View {
             set: { if !$0 { confirmedVersion = nil } }
         ), titleVisibility: .visible, presenting: confirmedVersion) { version in
             Button(role: .destructive) {
-                Task { await model.delete(reviewVersion: version) }
+                Task { await viewModel.delete(reviewVersion: version) }
             } label: {
-                if favoriteCount > 0 {
+                if viewModel.favoriteCount > 0 {
                     Text("Continue Including Favorites")
                 } else {
                     Text("Continue to Photos")
                 }
             }
         } message: { _ in
-            if favoriteCount > 0 {
-                Text("Favorites selected for removal: \(favoriteCount). Deletion can sync to other devices and affect Shared Library participants.")
+            if viewModel.favoriteCount > 0 {
+                Text("Favorites selected for removal: \(viewModel.favoriteCount). Deletion can sync to other devices and affect Shared Library participants.")
             } else {
                 Text("Deletion can sync to your other devices and affect Shared Library participants.")
             }
         }
-        .onChange(of: model.reviewVersion) { _, _ in confirmedVersion = nil }
-    }
-
-    private var favoriteCount: Int {
-        model.selection.filter(\.isFavorite).count
-    }
-}
-
-private enum PhotoImages {
-    enum Event: Sendable {
-        case progress(Double)
-        case image(UIImage)
-    }
-
-    private static let manager = PHImageManager.default()
-
-    static func events(for item: Screenshot, size: CGSize, network: Bool) -> AsyncStream<Event> {
-        AsyncStream(bufferingPolicy: .bufferingNewest(4)) { stream in
-            let options = PHImageRequestOptions()
-            options.deliveryMode = .highQualityFormat
-            options.resizeMode = .fast
-            options.isNetworkAccessAllowed = network
-            if network {
-                options.progressHandler = { progress, _, _, _ in stream.yield(.progress(progress)) }
-            }
-            let request = manager.requestImage(
-                for: item.asset, targetSize: size, contentMode: .aspectFit, options: options
-            ) { image, info in
-                guard info?[PHImageResultIsDegradedKey] as? Bool != true else { return }
-                if let image { stream.yield(.image(image)) }
-                stream.finish()
-            }
-            stream.onTermination = { reason in
-                if case .cancelled = reason {
-                    manager.cancelImageRequest(request)
-                }
-            }
-        }
+        .onChange(of: viewModel.reviewVersion) { _, _ in confirmedVersion = nil }
     }
 }

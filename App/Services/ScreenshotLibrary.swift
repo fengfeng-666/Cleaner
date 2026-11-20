@@ -3,42 +3,31 @@ import PhotosUI
 import UIKit
 import os
 
-struct Screenshot: Identifiable, Sendable {
-    let asset: PHAsset
-    let revision: Revision
-
-    var id: String { asset.localIdentifier }
-    var date: Date? { revision.date }
-    var isFavorite: Bool { revision.isFavorite }
-
-    init(asset: PHAsset) {
-        self.asset = asset
-        revision = Revision(
-            date: asset.creationDate, modifiedAt: asset.modificationDate,
-            width: asset.pixelWidth, height: asset.pixelHeight,
-            isFavorite: asset.isFavorite
-        )
-    }
-
-    struct Revision: Equatable, Sendable {
-        let date: Date?
-        let modifiedAt: Date?
-        let width: Int
-        let height: Int
-        let isFavorite: Bool
-    }
+protocol ScreenshotLibraryServing: Sendable {
+    @MainActor var access: PhotoAccess { get }
+    func requestAccess() async
+    @MainActor func observeChanges(_ onChange: @escaping @Sendable () -> Void) -> AnyObject
+    func scan() async throws -> [ScreenshotMonth]
+    @MainActor func current(_ requested: [Screenshot]) -> [Screenshot]
+    func delete(_ screenshots: [Screenshot]) async -> DeletionOutcome
+    @MainActor func presentLimitedPicker(onChange: @escaping @MainActor @Sendable () -> Void)
 }
 
-struct ScreenshotMonth: Identifiable, Sendable {
-    let date: Date?
-    var screenshots: [Screenshot]
+actor ScreenshotLibrary: ScreenshotLibraryServing {
+    nonisolated var access: PhotoAccess {
+        Self.access(for: PHPhotoLibrary.authorizationStatus(for: .readWrite))
+    }
 
-    var id: Date? { date }
-}
+    nonisolated func requestAccess() async {
+        _ = await PHPhotoLibrary.requestAuthorization(for: .readWrite)
+    }
 
-actor ScreenshotLibrary {
+    nonisolated func observeChanges(_ onChange: @escaping @Sendable () -> Void) -> AnyObject {
+        LibraryObserver(onChange: onChange)
+    }
+
     func scan() throws -> [ScreenshotMonth] {
-        guard Self.hasAccess else { return [] }
+        guard access.canRead else { return [] }
         let assets = PHAsset.fetchAssets(with: Self.options())
         var months: [ScreenshotMonth] = []
         let calendar = Calendar.current
@@ -57,39 +46,43 @@ actor ScreenshotLibrary {
         return months
     }
 
-    nonisolated static var hasAccess: Bool {
-        let access = PHPhotoLibrary.authorizationStatus(for: .readWrite)
-        return access == .authorized || access == .limited
+    nonisolated func current(_ requested: [Screenshot]) -> [Screenshot] {
+        Self.validatedAssets(for: requested).map(Screenshot.init(asset:))
     }
 
-    nonisolated static func current(_ requested: [Screenshot]) -> [Screenshot] {
-        guard hasAccess, !requested.isEmpty else { return [] }
+    nonisolated static func asset(matching screenshot: Screenshot) -> PHAsset? {
+        validatedAssets(for: [screenshot]).first
+    }
+
+    private nonisolated static func validatedAssets(for requested: [Screenshot]) -> [PHAsset] {
+        let status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
+        guard access(for: status).canRead, !requested.isEmpty else { return [] }
         let assets = PHAsset.fetchAssets(withLocalIdentifiers: requested.map(\.id), options: options())
         let expected = Dictionary(uniqueKeysWithValues: requested.map { ($0.id, $0.revision) })
-        var validated: [Screenshot] = []
+        var validated: [PHAsset] = []
         assets.enumerateObjects { asset, _, _ in
             guard isCandidate(asset) else { return }
             let screenshot = Screenshot(asset: asset)
             if expected[screenshot.id] == screenshot.revision {
-                validated.append(screenshot)
+                validated.append(asset)
             }
         }
         return validated
     }
 
-    nonisolated static func delete(_ screenshots: [Screenshot]) async -> DeletionOutcome {
+    nonisolated func delete(_ screenshots: [Screenshot]) async -> DeletionOutcome {
         let expectedAccess = PHPhotoLibrary.authorizationStatus(for: .readWrite)
         let validation = DeletionValidation()
         return await withCheckedContinuation { continuation in
             PHPhotoLibrary.shared().performChanges {
-                let current = Self.current(screenshots)
+                let current = Self.validatedAssets(for: screenshots)
                 guard current.count == screenshots.count,
                       PHPhotoLibrary.authorizationStatus(for: .readWrite) == expectedAccess
                 else {
                     validation.rejected.withLock { $0 = true }
                     return
                 }
-                PHAssetChangeRequest.deleteAssets(current.map(\.asset) as NSArray)
+                PHAssetChangeRequest.deleteAssets(current as NSArray)
             } completionHandler: { success, error in
                 if validation.rejected.withLock({ $0 }) {
                     continuation.resume(returning: .changed)
@@ -105,6 +98,32 @@ actor ScreenshotLibrary {
                     continuation.resume(returning: .unknown)
                 }
             }
+        }
+    }
+
+    @MainActor
+    func presentLimitedPicker(onChange: @escaping @MainActor @Sendable () -> Void) {
+        guard access == .limited,
+              let scene = UIApplication.shared.connectedScenes
+                .compactMap({ $0 as? UIWindowScene })
+                .first(where: { $0.activationState == .foregroundActive }),
+              var controller = scene.keyWindow?.rootViewController else { return }
+        while let presented = controller.presentedViewController {
+            controller = presented
+        }
+        PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: controller) { _ in
+            Task { @MainActor in onChange() }
+        }
+    }
+
+    private nonisolated static func access(for status: PHAuthorizationStatus) -> PhotoAccess {
+        switch status {
+        case .notDetermined: .notDetermined
+        case .restricted: .restricted
+        case .denied: .denied
+        case .authorized: .authorized
+        case .limited: .limited
+        @unknown default: .unknown
         }
     }
 
@@ -126,8 +145,17 @@ actor ScreenshotLibrary {
     }
 }
 
-enum DeletionOutcome {
-    case success, changed, cancelled, failed, unknown
+private extension Screenshot {
+    init(asset: PHAsset) {
+        self.init(
+            id: asset.localIdentifier,
+            revision: Revision(
+                date: asset.creationDate, modifiedAt: asset.modificationDate,
+                width: asset.pixelWidth, height: asset.pixelHeight,
+                isFavorite: asset.isFavorite
+            )
+        )
+    }
 }
 
 private struct DeletionValidation: Sendable {
@@ -149,20 +177,5 @@ final class LibraryObserver: NSObject, PHPhotoLibraryChangeObserver {
 
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         onChange()
-    }
-}
-
-@MainActor
-func showLimitedLibraryPicker(onChange: @escaping @MainActor @Sendable () -> Void) {
-    guard PHPhotoLibrary.authorizationStatus(for: .readWrite) == .limited,
-          let scene = UIApplication.shared.connectedScenes
-            .compactMap({ $0 as? UIWindowScene })
-            .first(where: { $0.activationState == .foregroundActive }),
-          var controller = scene.keyWindow?.rootViewController else { return }
-    while let presented = controller.presentedViewController {
-        controller = presented
-    }
-    PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: controller) { _ in
-        Task { @MainActor in onChange() }
     }
 }
